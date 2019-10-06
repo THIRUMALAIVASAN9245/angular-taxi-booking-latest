@@ -48,7 +48,7 @@
 				<div class="form-group">
 					<input type="text" placeholder="Date Of Birth *" formControlName="dateOfBirth" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }"  bsDatepicker  placement="bottom left" />
 					<div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
-						<div *ngIf="f.dateOfBirth.errors.required">Date OfBirth is required</div>
+						<div *ngIf="f.dateOfBirth.errors.required">Date Of Birth is required</div>
 					</div>
 				</div>
 				<div class="custom-control radio custom-control-inline pt-2">
