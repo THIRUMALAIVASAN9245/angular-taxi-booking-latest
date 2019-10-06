@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { DriverDetailsComponent } from './driver-details/driver-details.component';
 import { RideDetailsComponent } from './ride-details/ride-details.component';
+import { CreateRideComponent } from './create-ride/create-ride.component';
 
 const adminRoutes: Routes = [
   {
@@ -15,7 +16,8 @@ const adminRoutes: Routes = [
       { path: '', redirectTo: '/user-details', pathMatch: 'full' },
       { path: "user-details", component: UserDetailsComponent },
       { path: "driver-details", component: DriverDetailsComponent },
-      { path: "ride-details", component: RideDetailsComponent }
+      { path: "ride-details", component: RideDetailsComponent },
+       { path: "create-ride", component: CreateRideComponent }
     ]
   }];
 
