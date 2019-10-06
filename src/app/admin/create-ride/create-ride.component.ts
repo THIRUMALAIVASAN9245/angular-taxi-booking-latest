@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-ride',
@@ -10,6 +11,7 @@ export class CreateRideComponent implements OnInit {
   mytime: Date = new Date();
   registerForm: FormGroup;
   submitted = false;
+  isBookDetail = false;
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
   config = {
@@ -17,7 +19,8 @@ export class CreateRideComponent implements OnInit {
     ignoreBackdropClick: true,
     class: 'modal-sm'
   };
-  constructor(private modalService: BsModalService,
+  constructor(private router: Router,
+    private modalService: BsModalService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -42,6 +45,7 @@ export class CreateRideComponent implements OnInit {
   }
   closeFirstModal() {
     if (!this.modalRef) {
+      this.router.navigate(['/admin/ride-details']);
       return;
     }
 
@@ -49,17 +53,23 @@ export class CreateRideComponent implements OnInit {
     this.modalRef = null;
   }
 
+  closeFirstModalNavigate() {
+        this.router.navigate(['/admin/ride-details']);
+    this.modalRef2.hide();
+    this.modalRef.hide();
+  }
+
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
     this.submitted = true;
-
+    this.isBookDetail = false;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
-
+    this.isBookDetail = true;
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 }

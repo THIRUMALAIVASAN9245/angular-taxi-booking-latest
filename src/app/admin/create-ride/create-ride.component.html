@@ -24,7 +24,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="id">Pickup Date</label>
-							<input type="text" placeholder="Date Of Birth *" formControlName="pickupDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pickupDate.errors }"  bsDatepicker  placement="bottom left" />
+							<input type="text" placeholder="Pickup Date *" formControlName="pickupDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pickupDate.errors }"  bsDatepicker  placement="bottom left" />
 							<div *ngIf="submitted && f.pickupDate.errors" class="invalid-feedback">
 								<div *ngIf="f.pickupDate.errors.required">Pickup Date is required</div>
 							</div>
@@ -45,7 +45,7 @@
 				<button class="btn btn-primary">Check Availability</button>
 			</form>
 			<br><br>
-			<div class="row">
+			<div *ngIf="isBookDetail" class="row">
 				<div class="col-md-6 pt-3">
 					<div class="card">
 						<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
@@ -82,14 +82,8 @@
 </ng-template>
 
 <ng-template #templateNested>
-	<div class="modal-header">
-		<h4 class="modal-title pull-left">Second modal</h4>
-		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-	</div>
-	<div class="modal-body">
-		This is nested modal.<br>
-		<button *ngIf="modalRef" type="button" class="btn btn-danger" (click)="closeFirstModal()">Close first modal</button>
+	<div class="modal-body text-center">
+		<p>Thank you for booking ride</p>
+		<button type="button" class="btn btn-primary" (click)="closeFirstModalNavigate()" >Go To Summary</button>
 	</div>
 </ng-template>
