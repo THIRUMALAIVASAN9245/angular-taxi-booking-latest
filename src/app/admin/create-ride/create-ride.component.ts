@@ -10,6 +10,11 @@ export class CreateRideComponent implements OnInit {
 
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
+  config = {
+    backdrop: true,
+    ignoreBackdropClick: true,
+    class: 'modal-sm'
+  };
   constructor(private modalService: BsModalService) { }
 
   ngOnInit(): void {
@@ -17,10 +22,12 @@ export class CreateRideComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    this.config.class = "modal-sm";
+    this.modalRef = this.modalService.show(template, this.config);
   }
   openModal2(template: TemplateRef<any>) {
-    this.modalRef2 = this.modalService.show(template, { class: 'second' });
+    this.config.class = "second";
+    this.modalRef2 = this.modalService.show(template, this.config);
   }
   closeFirstModal() {
     if (!this.modalRef) {
