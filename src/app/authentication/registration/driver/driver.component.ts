@@ -26,7 +26,6 @@ export class DriverComponent implements OnInit {
       permit: ['', [Validators.required]],
       registration: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      vehicleImage: ['', [Validators.required, requiredFileType('png')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
@@ -34,7 +33,7 @@ export class DriverComponent implements OnInit {
       validator: MustMatch('password', 'confirmPassword')
     });
   }
-
+    // vehicleImage: ['', [Validators.required]],
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
