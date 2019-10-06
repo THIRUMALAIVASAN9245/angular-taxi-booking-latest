@@ -73,11 +73,11 @@
 							<div *ngIf="f.dateOfBirth.errors.required">Date Of Birth is required</div>
 						</div>
 					</div>
-					<div class="custom-control radio custom-control-inline pt-2">
+					<div class="custom-control radio custom-control-inline pb-4 pt-2">
 						<input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
 						<label class="custom-control-label" for="male">Male</label>
 					</div>
-					<div class="custom-control radio custom-control-inline">
+					<div class="custom-control radio custom-control-inline ">
 						<input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
 						<label class="custom-control-label" for="female">Female</label>
 					</div>
@@ -94,7 +94,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="text" placeholder="Description Name *" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+						<input type="text" placeholder="Description *" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
 						<div *ngIf="submitted && f.description.errors" class="invalid-feedback">
 							<div *ngIf="f.description.errors.required">Description is required</div>
 						</div>
