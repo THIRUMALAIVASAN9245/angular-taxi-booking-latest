@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import { BsDatepickerModule, TimepickerModule } from 'ngx-bootstrap';
+import { BsDatepickerModule, TimepickerModule, } from 'ngx-bootstrap';
 
 import { AppRouting } from './app.routing';
 import { AppComponent } from './app.component';
@@ -32,6 +32,7 @@ import { DashBoardComponent } from './dashboard/dashboard.component';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
+    ModalModule.forRoot(),
     AuthenticationModule,
     AdminModule,
     AppRouting
