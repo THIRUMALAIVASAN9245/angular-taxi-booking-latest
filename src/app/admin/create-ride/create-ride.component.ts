@@ -54,7 +54,7 @@ export class CreateRideComponent implements OnInit {
   }
 
   closeFirstModalNavigate() {
-        this.router.navigate(['/admin/ride-details']);
+    this.router.navigate(['/admin/ride-details']);
     this.modalRef2.hide();
     this.modalRef.hide();
   }
