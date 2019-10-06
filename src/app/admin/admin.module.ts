@@ -16,7 +16,7 @@ import { FooterComponent } from './../common/footer/footer.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { DriverDetailsComponent } from './driver-details/driver-details.component';
 import { RideDetailsComponent } from './ride-details/ride-details.component';
-import { CreateRideComponent } from './create-ride/create-ri.component';
+import { CreateRideComponent } from './create-ride/create-ride.component';
 
 @NgModule({
   declarations: [
