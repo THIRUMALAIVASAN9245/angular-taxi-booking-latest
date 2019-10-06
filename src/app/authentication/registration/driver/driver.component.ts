@@ -26,7 +26,7 @@ export class DriverComponent implements OnInit {
       Permit: ['', [Validators.required]],
       Registration: ['', [Validators.required]],
       Description: ['', [Validators.required]],
-      Vehicle: ['', [Validators.required]],
+      VehicleImage: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
