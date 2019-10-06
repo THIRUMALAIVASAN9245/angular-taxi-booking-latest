@@ -73,14 +73,26 @@
 						<div *ngIf="f.dateOfBirth.errors.required">Date Of Birth is required</div>
 					</div>
 				</div>
-				<div class="custom-control radio custom-control-inline pb-4 pt-2">
+				<!-- <div class="custom-control radio custom-control-inline pb-4 pt-2">
 					<input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
 					<label class="custom-control-label" for="male">Male</label>
 				</div>
 				<div class="custom-control radio custom-control-inline pb-4">
 					<input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
 					<label class="custom-control-label" for="female">Female</label>
-				</div>
+				</div> -->
+        	<div class="custom-control radio custom-control-inline pb- pt-2">
+						<label formControlName="gender" for="male" class="checkboxes-custom">Male
+              <input id="male"   name="gender" checked="checked" type="radio">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="custom-control radio custom-control-inline pb-2 pt-2">
+            <label formControlName="gender"  for="female" class="checkboxes-custom">Female
+              <input id="female" type="radio"  name="gender" >
+              <span class="checkmark"></span>
+            </label>
+          </div>
 				<div class="form-group">
 					<input type="text" placeholder="Permit *" formControlName="permit" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.permit.errors }" />
 					<div *ngIf="submitted && f.permit.errors" class="invalid-feedback">

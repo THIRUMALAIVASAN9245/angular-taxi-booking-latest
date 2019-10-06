@@ -198,7 +198,7 @@ a:hover, a:visited {
 .checkboxes-custom {
   display: block;
   position: relative;
-  padding-left: 35px;
+  padding-left: 30px;
   margin-bottom: 12px;
   cursor: pointer;
   -webkit-user-select: none;
@@ -221,8 +221,8 @@ a:hover, a:visited {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 21px;
+  width: 21px;
   background-color: #eee;
 }
 
@@ -233,7 +233,7 @@ a:hover, a:visited {
 
 /* When the checkbox is checked, add a blue background */
 .checkboxes-custom input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: #623073;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
