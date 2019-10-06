@@ -7,36 +7,46 @@
 <div class="row">
 	<div class="col-sm-8 offset-sm-2">
 		<div class="info-form">
-			<form>
+			<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 				<div class="form-group">
 					<label for="id">Pickup Location</label>
-					<input  type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="Enter Pickup Location">
-					<label for="name">Drop Location</label>
-					<input  type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter Drop Location">
+					<input type="text" placeholder="Pickup Location *" formControlName="pickupLocation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pickupLocation.errors }" />
+					<div *ngIf="submitted && f.pickupLocation.errors" class="invalid-feedback">
+						<div *ngIf="f.pickupLocation.errors.required">Pickup Location is required</div>
 					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="id">Pickup Date</label>
-								<input name="id" id="id"  type="text"
-           placeholder="dd-MM-yyyy"
-           class="form-control"
-           bsDatepicker  placement="bottom left">
-                                        </div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="id">Pickup Time</label>
-									<timepicker name="id" id="id" aria-describedby="idHelp" [(ngModel)]="mytime">
-									</timepicker>
-								</div>
+					<label for="name">Drop Location</label>
+					<input type="text" placeholder="Drop Location *" formControlName="dropLocation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dropLocation.errors }" />
+					<div *ngIf="submitted && f.dropLocation.errors" class="invalid-feedback">
+						<div *ngIf="f.dropLocation.errors.required">Drop Location is required</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="id">Pickup Date</label>
+							<input type="text" placeholder="Date Of Birth *" formControlName="pickupDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pickupDate.errors }"  bsDatepicker  placement="bottom left" />
+							<div *ngIf="submitted && f.pickupDate.errors" class="invalid-feedback">
+								<div *ngIf="f.pickupDate.errors.required">Pickup Date is required</div>
 							</div>
 						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="id">Pickup Time</label>
+							<timepicker name="id" id="id" formControlName="pickupTime" aria-describedby="idHelp"
+								[(ngModel)]="mytime">
+							</timepicker>
+							<div *ngIf="submitted && f.pickupTime.errors" class="invalid-feedback">
+								<div *ngIf="f.pickupTime.errors.required">Pickup Date is required</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="btn btn-primary">Check Availability</button>
 			</form>
-			<button class="btn btn-primary">Check Availability</button>
 			<br><br>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 pt-3">
 					<div class="card">
 						<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
 						<div class="card-body">
@@ -47,7 +57,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6 pt-3">
 					<div class="card">
 						<img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
 						<div class="card-body">
