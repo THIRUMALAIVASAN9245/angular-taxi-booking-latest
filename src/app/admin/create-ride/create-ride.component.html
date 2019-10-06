@@ -76,8 +76,6 @@
 <ng-template #template>
 	<div class="modal-body text-center">
 		<p>Do you want to confirm?</p>
-    <i class="fa fa-check"></i>
-    
 		<button type="button" class="btn btn-default" (click)="openModal2(templateNested)" >Yes</button>
 		<button type="button" class="btn btn-primary" (click)="closeFirstModal()" >No</button>
 	</div>
@@ -85,8 +83,7 @@
 
 <ng-template #templateNested>
 	<div class="modal-body text-center">
-		<i class="fa fa-check"></i>
-    <p>Thank you for booking ride</p>
+		<p >Thank you for booking ride</p>
 		<button type="button" class="btn btn-primary" (click)="closeFirstModalNavigate()" >Go To Summary</button>
 	</div>
 </ng-template>
