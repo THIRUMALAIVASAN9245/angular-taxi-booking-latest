@@ -95,7 +95,7 @@ a:hover, a:visited {
     width: 60%;
     background: #f8f9fa;
     font-weight: bold;
-    color: #383d41;
+    color: #623073;
     margin-top: 30%;
     margin-bottom: 3%;
     cursor: pointer;
@@ -135,7 +135,7 @@ a:hover, a:visited {
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #0062cc;
+    background: ##e2542f;
     color: #fff;
     font-weight: 600;
     width: 50%;
@@ -144,7 +144,7 @@ a:hover, a:visited {
 .register .nav-tabs{
     margin-top: 3%;
     border: none;
-    background: #0062cc;
+    background: #623073;
     border-radius: 1.5rem;
     width: 28%;
     float: right;
@@ -153,19 +153,21 @@ a:hover, a:visited {
     padding: 2%;
     height: 34px;
     font-weight: 600;
-    color: #fff;
+    /* color: #fff; */
     border-top-right-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
+    color: #fff !important;
 }
 .register .nav-tabs .nav-link:hover{
     border: none;
 }
 .register .nav-tabs .nav-link.active{
     width: 100px;
-    color: #0062cc;
+    /* color: #0062cc; */
     border: 2px solid #0062cc;
     border-top-left-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
+    color: #e2542f !important;
 }
 .register-heading{
     text-align: center;
