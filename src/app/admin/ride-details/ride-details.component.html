@@ -6,7 +6,8 @@
 
 <div class="row">
 	<div class="col text-right pt-2 pb-2">
-		<button class="btn btn-primary">Add Ride</button>
+		<button [routerLinkActive]="['active']"
+			routerLink="/admin/create-ride"  class="btn btn-primary">Add Ride</button>
 	</div>
 </div>
 <div class="table-responsive text-nowrap table-content">
