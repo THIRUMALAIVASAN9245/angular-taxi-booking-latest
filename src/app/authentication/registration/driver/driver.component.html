@@ -49,8 +49,11 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<button type="file" id="btnUpload" class="btn btn-primary" name="Upload">Taxi Picture</button>
+					<button  formControlName="vehicleImage" type="file" id="btnUpload" class="btn btn-primary" name="Upload">Taxi Picture</button>
 					<img src="https://www.w3schools.com/html/img_girl.jpg" style="margin-left: 5%;" alt="Taxi image" width="100" height="100">
+          	<div *ngIf="submitted && f.vehicleImage.errors" class="invalid-feedback">
+							<div *ngIf="f.email.vehicleImage.required">Vehicle Image is required</div>
+						</div>
 				</div>
 				</div>
 				<div class="col-md-6">
@@ -77,7 +80,7 @@
 						<input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
 						<label class="custom-control-label" for="male">Male</label>
 					</div>
-					<div class="custom-control radio custom-control-inline ">
+					<div class="custom-control radio custom-control-inline pb-4">
 						<input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
 						<label class="custom-control-label" for="female">Female</label>
 					</div>
