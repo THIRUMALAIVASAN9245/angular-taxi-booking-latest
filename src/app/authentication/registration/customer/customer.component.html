@@ -40,31 +40,29 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="text" placeholder="First Phone *" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
+					<input type="text" placeholder="Phone Number *" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
 					<div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
-						<div *ngIf="f.phoneNumber.errors.required">First Name is required</div>
+						<div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<input type="text" placeholder="Date Of Birth *" formControlName="dateOfBirth" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }"  bsDatepicker  placement="bottom left" />
 					<div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
-						<div *ngIf="f.dateOfBirth.errors.required">First Name is required</div>
+						<div *ngIf="f.dateOfBirth.errors.required">Date OfBirth is required</div>
 					</div>
+				</div>
+				<div class="custom-control radio custom-control-inline pt-2">
+					<input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
+					<label class="custom-control-label" for="male">Male</label>
+				</div>
+				<div class="custom-control radio custom-control-inline">
+					<input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
+					<label class="custom-control-label" for="female">Female</label>
 				</div>
 				<div class="form-group">
-					<div class="maxl" style="padding-top: 7px;">
-						<div class="inline">
-							<input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
-							<label class="custom-control-label" for="male">Male</label>
-						</div>
-						<div class="radio inline">
-							<input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
-							<label class="custom-control-label" for="female">Female</label>
-						</div>
-					</div>
+					<input type="submit" class="btnRegister"  value="Register"/>
+        </div>
 				</div>
-				<input type="submit" class="btnRegister"  value="Register"/>
-                                    </div>
 		</form>
 	</div>
 </div>

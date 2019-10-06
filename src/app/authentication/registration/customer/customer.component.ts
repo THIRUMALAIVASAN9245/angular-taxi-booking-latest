@@ -15,14 +15,14 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      gender: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      gender: ['male', [Validators.required]],
+      phoneNumber: ['', [Validators.required]],
+      dateOfBirth: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', [Validators.required]]
     }, {
       validator: MustMatch('password', 'confirmPassword')
     });
