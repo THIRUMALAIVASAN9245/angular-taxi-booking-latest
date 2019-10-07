@@ -12,7 +12,7 @@ import { AuthService } from './../../../providers/services/auth.service';
 export class DriverComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
-errorMessage: string = "";
+  errorMessage: string = "";
 
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -44,7 +44,7 @@ errorMessage: string = "";
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
-     this.errorMessage = "";
+    this.errorMessage = "";
     this.submitted = true;
 
     // stop here if form is invalid

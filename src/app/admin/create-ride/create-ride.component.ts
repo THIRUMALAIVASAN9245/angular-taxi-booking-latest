@@ -3,6 +3,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { BookingService } from './../../providers/services/booking.service';
+
 @Component({
   selector: 'app-create-ride',
   templateUrl: './create-ride.component.html'
@@ -11,6 +13,7 @@ export class CreateRideComponent implements OnInit {
   mytime: Date = new Date();
   registerForm: FormGroup;
   submitted = false;
+  isErrorMessage: string = "";
   isBookDetail = false;
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
@@ -21,7 +24,8 @@ export class CreateRideComponent implements OnInit {
   };
   constructor(private router: Router,
     private modalService: BsModalService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private bookingService: BookingService) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -54,9 +58,16 @@ export class CreateRideComponent implements OnInit {
   }
 
   closeFirstModalNavigate() {
-    this.router.navigate(['/admin/ride-details']);
-    this.modalRef2.hide();
-    this.modalRef.hide();
+    this.isErrorMessage = "";
+    const response = this.bookingService.booking(this.registerForm.value);
+    response.subscribe((response) => {
+      this.router.navigate(['/admin/ride-details']);
+      this.modalRef2.hide();
+      this.modalRef.hide();
+    }, error => {
+      this.isErrorMessage = error.message;
+    }
+    );
   }
 
   // convenience getter for easy access to form fields

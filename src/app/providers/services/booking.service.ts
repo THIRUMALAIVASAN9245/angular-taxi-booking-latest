@@ -13,6 +13,30 @@ export class BookingService {
   constructor(private http: HttpClient) {
   }
 
+  boking(bookingData: any): Observable<any> {
+    var bodyData = JSON.stringify(bookingData);
+    let url = `${this.baseUrl}` + "booking";
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    if (bookingData.pickupLocation === "admin" || bookingData.pickupLocation === "test") {
+      return of("Validbooking");
+    }
+    let errObj = {
+      title: "Invalidbooking",
+      message: "An server error occurred"
+    };
+    return throwError(errObj);
+    // return this.http.post(url, bodyData, httpOptions).pipe(map((response: Response) => {
+    //   let body = response.json();
+    //   var responseData = body || {};
+    //   return responseData;
+    // }), catchError(this.handleError('Register', null)));
+  }
+
   getAll(): Observable<any> {
     let url = `${this.baseUrl}` + "Booking";
     return this.http.get(url)
