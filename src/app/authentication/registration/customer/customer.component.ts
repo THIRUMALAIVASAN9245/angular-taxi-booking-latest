@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { MustMatch } from '../must-match.validator';
+import { AuthService } from './../../../providers/services/auth.service';
 
 @Component({
   selector: 'app-customer',
@@ -9,9 +11,12 @@ import { MustMatch } from '../must-match.validator';
 })
 export class CustomerComponent implements OnInit {
   registerForm: FormGroup;
-  submitted = false;
+  submitted: boolean = false;
+  errorMessage: string = "";
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -32,6 +37,7 @@ export class CustomerComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
+    this.errorMessage = "";
     this.submitted = true;
 
     // stop here if form is invalid
@@ -39,6 +45,12 @@ export class CustomerComponent implements OnInit {
       return;
     }
 
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
+    const response = this.authService.register(this.registerForm.value);
+    response.subscribe(result => {
+      this.router.navigate(['/auth/login']);
+    }, error => {
+      this.errorMessage = error.message;
+    });
   }
 }

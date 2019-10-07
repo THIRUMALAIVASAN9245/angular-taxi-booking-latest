@@ -65,16 +65,21 @@
               <input id="male"   name="gender" checked="checked" type="radio">
               <span class="checkmark"></span>
             </label>
-          </div>
-          <div class="custom-control radio custom-control-inline pt-2">
-            <label formControlName="gender"  for="female" class="checkboxes-custom">Female
+					</div>
+					<div class="custom-control radio custom-control-inline pt-2">
+						<label formControlName="gender"  for="female" class="checkboxes-custom">Female
               <input id="female" type="radio"  name="gender" >
               <span class="checkmark"></span>
             </label>
-          </div>
+					</div>
 					<input type="submit" class="btnRegister"  value="Register"/>
-        </div>
+					<div class="form-group">
+						<span style="color: red;font-weight: bold;background-color: white;margin-top: 15%;"
+						*ngIf="errorMessage">
+						{{errorMessage}}
+					</span> </div>
 				</div>
+			</div>
 		</form>
 	</div>
 </div>

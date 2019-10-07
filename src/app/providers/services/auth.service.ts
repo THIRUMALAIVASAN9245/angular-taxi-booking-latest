@@ -54,35 +54,53 @@ export class AuthService {
     this.loggedIn.next(false);
   }
 
-  login(userId: string, password: string): Observable<string> {
-    var bodyData = JSON.stringify({ userId: userId, password: password });
+  login(userDetails: any): Observable<any> {
+    var bodyData = JSON.stringify(userDetails);
     let url = `${this.baseUrl}` + "User";
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post(url, bodyData, httpOptions)
-      .pipe(map((response: Response) => {
-        let body = response.json();
-        var responseData = body || {};
-        return responseData;
-      }), catchError(this.handleError('login', null)));
+
+    if (userDetails.email === "admin@test.com" || userDetails.email === "123456") {
+      return of("ValidUser");
+    }
+    let errObj = {
+      title: "InvalidUser",
+      message: "Invalid User"
+    };
+    return throwError(errObj);
+    // return this.http.post(url, bodyData, httpOptions)
+    //   .pipe(map((response: Response) => {
+    //     let body = response.json();
+    //     var responseData = body || {};
+    //     return responseData;
+    //   }), catchError(this.handleError('login', null)));
   }
 
-  register(userData: User): Observable<boolean> {
+  register(userData: any): Observable<any> {
     var bodyData = JSON.stringify(userData);
-    let url = `${this.baseUrl}`  + "User";
+    let url = `${this.baseUrl}` + "User";
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post(url, bodyData, httpOptions).pipe(map((response: Response) => {
-      let body = response.json();
-      var responseData = body || {};
-      return responseData;
-    }), catchError(this.handleError('Register', null)));
+
+    if (userData.firstName === "admin" || userData.firstName === "test") {
+      return of("ValidUser");
+    }
+    let errObj = {
+      title: "InvalidUser",
+      message: "An server error occurred"
+    };
+    return throwError(errObj);
+    // return this.http.post(url, bodyData, httpOptions).pipe(map((response: Response) => {
+    //   let body = response.json();
+    //   var responseData = body || {};
+    //   return responseData;
+    // }), catchError(this.handleError('Register', null)));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
