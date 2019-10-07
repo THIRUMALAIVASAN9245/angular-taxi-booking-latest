@@ -15,8 +15,8 @@ import { AdminModule } from './admin/admin.module';
 
 import { AuthService } from './providers/services/auth.service';
 import { BookingService } from './providers/services/booking.service';
-import { AuthGuard } from './providers/services/auth.Interceptor';
-import { AuthInterceptor } from './providers/services/auth-guard.service';
+import { AuthGuard } from './providers/services/auth-guard.service';
+import { AuthInterceptor } from './providers/services/auth.Interceptor';
 
 import { DashBoardComponent } from './dashboard/dashboard.component';
 

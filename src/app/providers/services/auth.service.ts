@@ -41,7 +41,7 @@ export class AuthService {
   }
 
   isTokenExpired() {
-    return false;
+    return localStorage.getItem(UserId) ? false : true;
     // return this.helper.isTokenExpired(this.getToken());
   }
 
