@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
@@ -15,6 +15,7 @@ import { AdminModule } from './admin/admin.module';
 
 import { AuthService } from './providers/services/auth.service';
 import { BookingService } from './providers/services/booking.service';
+import { AuthInterceptor } from './providers/services/auth.Interceptor';
 
 import { DashBoardComponent } from './dashboard/dashboard.component';
 
@@ -38,6 +39,11 @@ import { DashBoardComponent } from './dashboard/dashboard.component';
     AppRouting
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     AuthService,
     BookingService
   ],
