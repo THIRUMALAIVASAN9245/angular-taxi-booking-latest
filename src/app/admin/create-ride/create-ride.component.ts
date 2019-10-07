@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { BookingService } from './../../providers/services/booking.service';
+import { AuthService } from './../../providers/services/auth.service';
 
 @Component({
   selector: 'app-create-ride',
@@ -12,6 +13,7 @@ import { BookingService } from './../../providers/services/booking.service';
 export class CreateRideComponent implements OnInit {
   mytime: Date = new Date();
   registerForm: FormGroup;
+  driverDetails: any[];
   submitted = false;
   isErrorMessage: string = "";
   isBookDetail = false;
@@ -25,7 +27,8 @@ export class CreateRideComponent implements OnInit {
   constructor(private router: Router,
     private modalService: BsModalService,
     private formBuilder: FormBuilder,
-    private bookingService: BookingService) { }
+    private bookingService: BookingService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -37,6 +40,7 @@ export class CreateRideComponent implements OnInit {
       customerId: ['12345', []],
       employeeId: ['12345', []]
     });
+    this.getUserDetails();
   }
 
   openModal(template: TemplateRef<any>) {
@@ -55,7 +59,7 @@ export class CreateRideComponent implements OnInit {
     }
     );
   }
-  
+
   closeFirstModal() {
     this.isErrorMessage = "";
     if (!this.modalRef) {
@@ -86,5 +90,15 @@ export class CreateRideComponent implements OnInit {
     }
     this.isBookDetail = true;
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+  }
+
+  private getUserDetails() {
+    this.isErrorMessage = "";
+    const response = this.authService.getUser(null);
+    response.subscribe((response) => {
+      this.driverDetails = response;
+    }, error => {
+      this.isErrorMessage = error.message;
+    });
   }
 }
