@@ -40,6 +40,7 @@ export class CreateRideComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
+    this.isErrorMessage = "";
     this.config.class = "modal-sm";
     this.modalRef = this.modalService.show(template, this.config);
   }
@@ -55,6 +56,7 @@ export class CreateRideComponent implements OnInit {
     );
   }
   closeFirstModal() {
+    this.isErrorMessage = "";
     if (!this.modalRef) {
       this.router.navigate(['/admin/ride-details']);
       return;
@@ -74,6 +76,7 @@ export class CreateRideComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
+    this.isErrorMessage = "";
     this.submitted = true;
     this.isBookDetail = false;
     // stop here if form is invalid
@@ -81,6 +84,6 @@ export class CreateRideComponent implements OnInit {
       return;
     }
     this.isBookDetail = true;
-    cons('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 }
