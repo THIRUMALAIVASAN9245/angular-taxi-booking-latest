@@ -55,6 +55,7 @@ export class CreateRideComponent implements OnInit {
     }
     );
   }
+  
   closeFirstModal() {
     this.isErrorMessage = "";
     if (!this.modalRef) {
