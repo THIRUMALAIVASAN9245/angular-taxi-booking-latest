@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     const response = this.authService.login(this.loginForm.value);
     response.subscribe((response) => {
       // this.authService.setToken("JSON.parse(result).token");
-      this.authService.setUserId(this.loginForm.value.email);
+      // this.authService.setUserId(this.loginForm.value.email);
       this.router.navigate(['/admin/user-details'])
     }, error => {
       this.isErrorMessage = "InValid User";

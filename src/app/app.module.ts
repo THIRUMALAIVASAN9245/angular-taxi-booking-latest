@@ -15,7 +15,8 @@ import { AdminModule } from './admin/admin.module';
 
 import { AuthService } from './providers/services/auth.service';
 import { BookingService } from './providers/services/booking.service';
-import { AuthInterceptor } from './providers/services/auth.Interceptor';
+import { AuthGuard } from './providers/services/auth.Interceptor';
+import { AuthInterceptor } from './providers/services/auth-guard.service';
 
 import { DashBoardComponent } from './dashboard/dashboard.component';
 
@@ -44,6 +45,7 @@ import { DashBoardComponent } from './dashboard/dashboard.component';
       useClass: AuthInterceptor,
       multi: true
     },
+    AuthGuard,
     AuthService,
     BookingService
   ],
