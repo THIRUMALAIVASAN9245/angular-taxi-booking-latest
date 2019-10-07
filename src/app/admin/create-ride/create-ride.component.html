@@ -76,6 +76,10 @@
 <ng-template #template>
 	<div class="modal-body text-center">
 		<p>Do you want to confirm?</p>
+		<span style="color: red;font-weight: bold;background-color: white;margin-top: 15%;"
+						*ngIf="isErrorMessage">
+						{{isErrorMessage}}
+					</span>
 		<button type="button" class="btn btn-default" (click)="openModal2(templateNested)" >Yes</button>
 		<button type="button" class="btn btn-primary" (click)="closeFirstModal()" >No</button>
 	</div>
@@ -83,7 +87,7 @@
 
 <ng-template #templateNested>
 	<div class="modal-body text-center">
-    <img class="pb-2" src="https://spainbox.com/mailboxes/wp-content/uploads/2017/03/payment-completed.svg" style="margin-left: 5%;" alt="Taxi image" width="100" height="100">
+		<img class="pb-2" src="https://spainbox.com/mailboxes/wp-content/uploads/2017/03/payment-completed.svg" style="margin-left: 5%;" alt="Taxi image" width="100" height="100">
 		<p class="pb-2">Thank you for booking ride</p>
 		<button type="button" class="btn btn-primary" (click)="closeFirstModalNavigate()" >Go To Summary</button>
 	</div>

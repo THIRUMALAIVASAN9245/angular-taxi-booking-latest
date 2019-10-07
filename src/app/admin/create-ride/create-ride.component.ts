@@ -45,7 +45,14 @@ export class CreateRideComponent implements OnInit {
   }
   openModal2(template: TemplateRef<any>) {
     this.config.class = "second";
-    this.modalRef2 = this.modalService.show(template, this.config);
+    this.isErrorMessage = "";
+    const response = this.bookingService.booking(this.registerForm.value);
+    response.subscribe((response) => {
+      this.modalRef2 = this.modalService.show(template, this.config);
+    }, error => {
+      this.isErrorMessage = error.message;
+    }
+    );
   }
   closeFirstModal() {
     if (!this.modalRef) {
@@ -58,16 +65,9 @@ export class CreateRideComponent implements OnInit {
   }
 
   closeFirstModalNavigate() {
-    this.isErrorMessage = "";
-    const response = this.bookingService.booking(this.registerForm.value);
-    response.subscribe((response) => {
-      this.router.navigate(['/admin/ride-details']);
-      this.modalRef2.hide();
-      this.modalRef.hide();
-    }, error => {
-      this.isErrorMessage = error.message;
-    }
-    );
+    this.router.navigate(['/admin/ride-details']);
+    this.modalRef2.hide();
+    this.modalRef.hide();
   }
 
   // convenience getter for easy access to form fields
@@ -81,6 +81,6 @@ export class CreateRideComponent implements OnInit {
       return;
     }
     this.isBookDetail = true;
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+    cons('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 }
