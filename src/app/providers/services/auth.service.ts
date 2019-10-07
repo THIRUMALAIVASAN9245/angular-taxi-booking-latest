@@ -103,6 +103,23 @@ export class AuthService {
     // }), catchError(this.handleError('Register', null)));
   }
 
+  getUser(userData: any): Observable<any> {
+    var bodyData = JSON.stringify(userData);
+    let url = `${this.baseUrl}` + "User";
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return of(this.getUserDetails());
+    // return this.http.post(url, bodyData, httpOptions).pipe(map((response: Response) => {
+    //   let body = response.json();
+    //   var responseData = body || {};
+    //   return responseData;
+    // }), catchError(this.handleError('Register', null)));
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
@@ -116,5 +133,36 @@ export class AuthService {
       };
       return of(error);
     };
+  }
+
+  private getUserDetails(): any {
+    return [
+      {
+        name: "Thirumalai",
+        mobile: 912345678,
+        email: "thirumalai@gmail.com",
+        status: "Active",
+        dateofbirth: new Date("1990-02-02"),
+        vehicleNumber: "TN 11 CY 2200",
+        avatar: "fsdfsdf",
+        license: "fsdfsdf",
+        insurance: "fsdfsdf",
+        registration: "fsdfsdf",
+        permit: "fsdfsdf"
+      },
+      {
+        name: "Vasan",
+        mobile: 6464565545,
+        email: "Vasan@gmail.com",
+        status: "InActive",
+        dateofbirth: new Date("1990-02-02"),
+        vehicleNumber: "TN 11 CY 2200",
+        avatar: "fsdfsdf",
+        license: "fsdfsdf",
+        insurance: "fsdfsdf",
+        registration: "fsdfsdf",
+        permit: "fsdfsdf"
+      }
+    ];
   }
 }

@@ -4,6 +4,14 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="col text-right pt-2 pb-2">
+		<span style="color: red;font-weight: bold;background-color: white;margin-top: 15%;"	*ngIf="isErrorMessage">
+			{{isErrorMessage}}<br>
+		</span>
+	</div>
+</div>
+
 <div class="table-responsive text-nowrap table-content">
 	<table class="table table-bordered table-hover table-striped">
 		<thead>

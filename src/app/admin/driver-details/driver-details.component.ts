@@ -1,42 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './../../providers/services/auth.service';
 
 @Component({
-    selector: 'app-driver-details',
-    templateUrl: './driver-details.component.html'
+  selector: 'app-driver-details',
+  templateUrl: './driver-details.component.html'
 })
 export class DriverDetailsComponent implements OnInit {
-driverDetails: any[];
+  driverDetails: any[];
+  isErrorMessage: string = "";
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.driverDetails = [
-      {
-        name: "Thirumalai",
-        mobile: 912345678,
-        email: "thirumalai@gmail.com",
-        status: "Active",
-        dateofbirth: new Date("1990-02-02"),
-        vehicleNumber: "TN 11 CY 2200",
-        avatar: "fsdfsdf",
-        license: "fsdfsdf",
-        insurance: "fsdfsdf",
-        registration: "fsdfsdf",
-        permit: "fsdfsdf"
-      },
-      {
-        name: "Vasan",
-        mobile: 6464565545,
-        email: "Vasan@gmail.com",
-        status: "InActive",
-        dateofbirth: new Date("1990-02-02"),
-        vehicleNumber: "TN 11 CY 2200",
-        avatar: "fsdfsdf",
-        license: "fsdfsdf",
-        insurance: "fsdfsdf",
-        registration: "fsdfsdf",
-        permit: "fsdfsdf"
-      }
-    ]
+    this.getUserDetails();
+  }
+
+  private getUserDetails() {
+    this.isErrorMessage = "";
+    const response = this.authService.getUser(null);
+    response.subscribe((response) => {
+      this.driverDetails = response;
+    }, error => {
+      this.isErrorMessage = error.message;
+    });
   }
 }
