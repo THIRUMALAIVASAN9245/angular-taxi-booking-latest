@@ -70,7 +70,9 @@
                     <a *ngIf="ride.status=='PENDING'" id="22" data-original-title="delete" data-toggle="tooltip" data-placement="top" 
           class="pl-1 pr-1 btnaction menu-icon vd_bd-red vd_red">Accept</a>  
            <a *ngIf="ride.status!='COMPLETED' && ride.status!='CANCELLED' && ride.status!='ACCEPTED'" id="22" data-original-title="delete" data-toggle="tooltip" data-placement="top" 
-          class="pl-1 pr-1 btnaction menu-icon vd_bd-red vd_red">Cancel</a>               
+          class="pl-1 pr-1 btnaction menu-icon vd_bd-red vd_red">Cancel</a>     
+          <a *ngIf="ride.status=='ACCEPTED'" id="22" data-original-title="delete" data-toggle="tooltip" data-placement="top" 
+          class="pl-1 pr-1 btnaction menu-icon vd_bd-red vd_red">C</a>           
           </span>
 				</td>
 			</tr>
