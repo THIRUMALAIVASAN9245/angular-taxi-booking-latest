@@ -13,7 +13,7 @@ export class BookingService {
   constructor(private http: HttpClient) {
   }
 
-  boking(bookingData: any): Observable<any> {
+  booking(bookingData: any): Observable<any> {
     var bodyData = JSON.stringify(bookingData);
     let url = `${this.baseUrl}` + "booking";
     let httpOptions = {
